@@ -20,7 +20,7 @@ public class SqlTransactionRepository : ITransactionRepository
         return transaction;
     }
 
-    public async Task<Transaction?> GetTransactionById(int id)
+    public async Task<Transaction?> GetTransactionById(decimal id)
     {
         return await _context.Transactions.FindAsync(id);
     }

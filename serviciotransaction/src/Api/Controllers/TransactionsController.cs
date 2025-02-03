@@ -19,11 +19,11 @@ public class TransactionsController : ControllerBase
     public async Task<IActionResult> CreateTransaction([FromBody] Transaction transaction)
     {
         var newTransaction = await _service.CreateTransaction(transaction);
-        return CreatedAtAction(nameof(GetTransactionById), new { id = newTransaction.Id_Transaccion }, newTransaction); // Usar Id_Transaccion
+        return CreatedAtAction(nameof(GetTransactionById), new { id = newTransaction.Id_Transaccion }, newTransaction);
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetTransactionById(int id)
+    public async Task<IActionResult> GetTransactionById(decimal id) // Changed to decimal
     {
         var transaction = await _service.GetTransactionById(id);
         return transaction == null ? NotFound() : Ok(transaction);

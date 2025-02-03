@@ -5,5 +5,5 @@ namespace TransactionService.Core.Ports;
 public interface ITransactionService
 {
     Task<Transaction> CreateTransaction(Transaction transaction);
-    Task<Transaction?> GetTransactionById(int id); // Añadido el método GetTransactionById
+    Task<Transaction?> GetTransactionById(decimal id); // Changed to decimal
 }

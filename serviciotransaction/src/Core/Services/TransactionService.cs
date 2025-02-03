@@ -22,7 +22,7 @@ public class TransactionService : ITransactionService
         return await _repository.CreateTransaction(transaction);
     }
 
-    public async Task<Transaction?> GetTransactionById(int id) // Implementación de GetTransactionById
+    public async Task<Transaction?> GetTransactionById(decimal id) // Changed to decimal
     {
         return await _repository.GetTransactionById(id);
     }
