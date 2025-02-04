@@ -26,4 +26,8 @@ public class TransactionService : ITransactionService
     {
         return await _repository.GetTransactionById(id);
     }
+    public async Task UpdateTransaction(Transaction transaction)
+    {
+        await _repository.UpdateTransaction(transaction);
+    }
 }

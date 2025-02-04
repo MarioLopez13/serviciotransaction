@@ -28,4 +28,22 @@ public class TransactionsController : ControllerBase
         var transaction = await _service.GetTransactionById(id);
         return transaction == null ? NotFound() : Ok(transaction);
     }
+    [HttpPut("{id}")] // Nuevo método para actualizar el estado
+    public async Task<IActionResult> UpdateTransactionStatus(decimal id, [FromBody] UpdateTransactionStatusDTO updateTransactionStatusDTO)
+    {
+        var transaction = await _service.GetTransactionById(id);
+        if (transaction == null)
+        {
+            return NotFound();
+        }
+
+        transaction.Estado = updateTransactionStatusDTO.Estado;
+        await _service.UpdateTransaction(transaction); // Llama al servicio para guardar los cambios
+        return NoContent();
+    }
+}
+
+public class UpdateTransactionStatusDTO
+{
+    public string Estado { get; set; }
 }

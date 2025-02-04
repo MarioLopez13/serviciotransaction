@@ -24,4 +24,9 @@ public class SqlTransactionRepository : ITransactionRepository
     {
         return await _context.Transactions.FindAsync(id);
     }
+    public async Task UpdateTransaction(Transaction transaction)
+    {
+        _context.Transactions.Update(transaction);
+        await _context.SaveChangesAsync();
+    }
 }
